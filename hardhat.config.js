@@ -17,15 +17,25 @@ task("deploy", "Deploy the smart contracts", async(taskArgs, hre) => {
 
   await artwork.deployed();
 
-  await hre.run("verify:verify", {
+  /*await hre.run("verify:verify", {
     address: artwork.address,
     constructorArguments: [
       "Artwork Contract",
       "ART"
     ]
-  })
+  })*/
 
-})
+});
+
+task("verifycontract","verify contract", async(taskArgs,hre) => {
+await hre.run("verify:verify", {
+  address: "0xD27ef638c6E1ee144245548aD67CE22A47Ae6A0a",
+  constructorArguments: [
+    "Artwork Contract",
+    "ART"],
+  });
+});
+
 
 module.exports = {
   solidity: "0.8.4",
